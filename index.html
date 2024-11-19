@@ -10,6 +10,9 @@
   <!-- Highlight.js CSS: Atom One Light Theme -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-light.min.css">
   
+  <!-- Devicon CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  
   <style>
     /* Reset default styles */
     * {
@@ -53,17 +56,26 @@
     h1 {
       font-size: 3rem;
       margin-bottom: 30px;
+      text-align: center;
     }
 
     h2 {
       font-size: 2rem;
       margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    /* Language Logo Styles */
+    .language-logo {
+      font-size: 40px;
     }
 
     /* Navigation buttons styles */
     .nav-buttons {
       margin-top: 30px;
-      display: none; /* Hidden initially */
       justify-content: center;
       gap: 20px;
     }
@@ -145,6 +157,19 @@
       }
     }
 
+    /* Last Page Styles */
+    #lastPage {
+      display: none; /* Hidden initially */
+      text-align: center;
+    }
+
+    #lastPage h1 {
+      color: #333;
+      margin-top: 20px;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
     /* Responsive design */
     @media (max-width: 600px) {
       .container {
@@ -158,6 +183,19 @@
       .nav-buttons button, #startButton {
         width: 100%;
       }
+
+      h2 {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .language-logo {
+        font-size: 30px;
+      }
+
+      #lastPage h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
@@ -165,6 +203,12 @@
 
   <div class="container" id="contentContainer">
     <div id="content"></div>
+    
+    <!-- 마지막 페이지 추가 (이미지 제거) -->
+    <div id="lastPage">
+      <h1>지영 선생님의 생신을 축하합니다! 🎉</h1>
+    </div>
+    
     <button id="startButton">Start</button>
     <div class="nav-buttons">
       <button id="prevButton">Previous</button>
@@ -176,63 +220,39 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
   
   <!-- Individual language support scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/rust.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/scala.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/fsharp.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/x86asm.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/d.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/ada.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/elixir.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/haskell.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/php.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/ocaml.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/java.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/perl.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/ruby.min.js"></script>
+  <!-- 필요한 언어의 Highlight.js 스크립트를 추가하세요 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/javascript.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/typescript.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/basic.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/dart.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/arduino.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/fortran.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/r.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/cpp.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/lua.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/sql.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/clojure.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+  <!-- 다른 언어들도 추가하세요 -->
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // 코드 스니펫 정의
       const codeSnippets = {
         "rust": `fn main() {
-  println!("Happy birthday!");
+    println!("Happy birthday!");
 }`,
         "scala": `object Main extends App {
-  println("Happy Birthday!")
+    println("Happy Birthday!")
 }`,
         "fsharp": `open System
 printfn "Happy birthday!"`,
         "x86asm": `.LC0:
-.string "Happy birthday!"
+    .string "Happy birthday!"
 main:
-  endbr64
-  pushq %rbp
-  movq %rsp, %rbp
-  leaq .LC0(%rip), %rax
-  movq %rax, %rdi
-  movl $0, %eax
-  call printf@PLT
-  movl $0, %eax
-  popq %rbp
-  ret`,
+    endbr64
+    pushq %rbp
+    movq %rsp, %rbp
+    leaq .LC0(%rip), %rax
+    movq %rax, %rdi
+    movl $0, %eax
+    call printf@PLT
+    movl $0, %eax
+    popq %rbp
+    ret`,
         "d": `import std;
 void main() {
-  writeln("Happy birthday!");
+    writeln("Happy birthday!");
 }`,
         "ada": `with Ada.Text_IO; use Ada.Text_IO;
 procedure Hello is
@@ -244,11 +264,11 @@ end Hello;`,
         "php": `<?php
 echo "Happy birthday!";
 ?>`,
-        "ocaml": `print_string "Happy birthday!"`,
+        "ocaml": `print_string "Happy birthday!";`,
         "java": `public class Main {
-  public static void main(String[] args) {
-    System.out.println("Happy birthday!");
-  }
+    public static void main(String[] args) {
+        System.out.println("Happy birthday!");
+    }
 }`,
         "python": `print("Happy birthday!")`,
         "perl": `print "Happy birthday!";`,
@@ -258,48 +278,81 @@ echo "Happy birthday!";
         "bash": `echo "Happy birthday!"`,
         "basic": `PRINT "Happy birthday!"`,
         "dart": `void main() {
-  print("Happy birthday");
+    print("Happy birthday");
 }`,
         "arduino": `void setup() {
-  Serial.begin(9600);
-  Serial.println("Happy birthday!");
+    Serial.begin(9600);
+    Serial.println("Happy birthday!");
 } 
 void loop() {}`,
         "fortran": `program main
-  write(*,*) "Happy birthday!"
+    write(*,*) "Happy birthday!"
 end program main`,
         "csharp": `using System;
 namespace HappyBirthday
 {
-  class Congratulate
-  {
-    private static void Main()
+    class Congratulate
     {
-      Console.WriteLine("Happy birthday!");
+        private static void Main()
+        {
+            Console.WriteLine("Happy birthday!");
+        }
     }
-  }
 }`,
-        "r": `cat("Happy Birthday!\\n")`,
+        "r": `cat("Happy Birthday!\n")`,
         "go": `package main
 import "fmt"
 func main() {
-  fmt.Println("Happy Birthday!")
+    fmt.Println("Happy Birthday!")
 }`,
         "cpp": `#include <iostream>
 using namespace std;
 int main() {
-  cout << "Happy Birthday!" << endl;
-  return 0;
+    cout << "Happy Birthday!" << endl;
+    return 0;
 }`,
         "lua": `print("Happy Birthday!")`,
         "sql": `INSERT INTO table_name (column1) VALUES ("Happy birthday");`,
         "clojure": `(println "Happy birthday!")`
       };
 
+      // 언어별 아이콘 클래스 매핑 (Devicon 사용)
+      const languageIcons = {
+        "rust": "devicon-rust-plain",
+        "scala": "devicon-scala-plain",
+        "fsharp": "devicon-fsharp-plain",
+        "x86asm": "", // 아이콘 없음
+        "d": "devicon-d-plain",
+        "ada": "", // 아이콘 없음
+        "elixir": "devicon-elixir-plain",
+        "haskell": "devicon-haskell-plain",
+        "php": "devicon-php-plain",
+        "ocaml": "devicon-ocaml-plain",
+        "java": "devicon-java-plain",
+        "python": "devicon-python-plain",
+        "perl": "devicon-perl-plain",
+        "ruby": "devicon-ruby-plain",
+        "javascript": "devicon-javascript-plain",
+        "typescript": "devicon-typescript-plain",
+        "bash": "devicon-bash-plain",
+        "basic": "", // 아이콘 없음
+        "dart": "devicon-dart-plain",
+        "arduino": "devicon-arduino-plain",
+        "fortran": "", // 아이콘 없음
+        "csharp": "devicon-csharp-plain",
+        "r": "devicon-r-plain",
+        "go": "devicon-go-plain",
+        "cpp": "devicon-cplusplus-plain",
+        "lua": "devicon-lua-plain",
+        "sql": "", // 아이콘 없음
+        "clojure": "devicon-clojure-plain"
+      };
+
       const languages = Object.keys(codeSnippets);
       let currentIndex = -1; // -1은 홈 화면을 나타냄
 
       const contentDiv = document.getElementById('content');
+      const lastPage = document.getElementById('lastPage');
       const startButton = document.getElementById('startButton');
       const navButtons = document.querySelector('.nav-buttons');
       const prevButton = document.getElementById('prevButton');
@@ -325,14 +378,16 @@ int main() {
 
       // 키보드 이벤트 리스너
       document.addEventListener('keydown', (event) => {
+        const key = event.key;
+
         if (currentIndex === -1) { // 홈 화면일 때
-          if (event.key === 'ArrowRight') { // 오른쪽 화살표 키
+          if (key === 'ArrowRight' || key === ' ') { // 오른쪽 화살표 키 또는 스페이스바
             startPresentation();
           }
-        } else { // 코드 스니펫 화면일 때
-          if (event.key === 'ArrowLeft') { // 왼쪽 화살표 키
+        } else if (currentIndex < languages.length) { // 코드 스니펫 화면일 때
+          if (key === 'ArrowLeft') { // 왼쪽 화살표 키
             navigatePrevious();
-          } else if (event.key === 'ArrowRight') { // 오른쪽 화살표 키
+          } else if (key === 'ArrowRight' || key === ' ') { // 오른쪽 화살표 키 또는 스페이스바
             navigateNext();
           }
         }
@@ -346,26 +401,58 @@ int main() {
         renderCode(currentIndex);
       }
 
-      // 다음 코드 스니펫으로 이동 (순환)
+      // 다음 코드 스니펫으로 이동
       function navigateNext() {
         currentIndex++;
-        if (currentIndex >= languages.length) {
-          currentIndex = 0; // 첫 번째 코드 스니펫으로 순환
+        if (currentIndex < languages.length) {
+          renderCode(currentIndex);
+        } else if (currentIndex === languages.length) {
+          showLastPage();
+        } else {
+          // 순환하여 첫 번째 코드 스니펫으로 이동
+          currentIndex = 0;
+          renderCode(currentIndex);
         }
-        renderCode(currentIndex);
       }
 
-      // 이전 코드 스니펫으로 이동 (순환)
+      // 이전 코드 스니펫으로 이동
       function navigatePrevious() {
-        currentIndex--;
-        if (currentIndex < 0) {
-          currentIndex = languages.length - 1; // 마지막 코드 스니펫으로 순환
+        if (currentIndex === languages.length) {
+          // 마지막 페이지에서 이전을 누르면 마지막 코드 스니펫으로 돌아감
+          hideLastPage();
+          currentIndex = languages.length - 1;
+          renderCode(currentIndex);
+        } else if (currentIndex > 0) {
+          currentIndex--;
+          renderCode(currentIndex);
+        } else if (currentIndex === 0) {
+          // 첫 번째 코드 스니펫에서 이전을 누르면 홈 화면으로 돌아감
+          renderHome();
+        } else {
+          // 기타 경우 순환하여 마지막 코드 스니펫으로 이동
+          currentIndex = languages.length - 1;
+          renderCode(currentIndex);
         }
-        renderCode(currentIndex);
+      }
+
+      // 마지막 페이지 표시
+      function showLastPage() {
+        contentDiv.style.display = 'none';
+        lastPage.style.display = 'block';
+        navButtons.style.display = 'none';
+      }
+
+      // 마지막 페이지 숨기기
+      function hideLastPage() {
+        lastPage.style.display = 'none';
+        contentDiv.style.display = 'block';
+        navButtons.style.display = 'flex';
       }
 
       // 홈 화면 렌더링 함수
       function renderHome() {
+        contentDiv.style.display = 'block';
+        lastPage.style.display = 'none';
         contentDiv.innerHTML = '<h1>Happy Birthday 🎉</h1>';
         navButtons.style.display = 'none';
         startButton.style.display = 'block';
@@ -376,9 +463,16 @@ int main() {
       function renderCode(index) {
         const language = languages[index];
         const code = codeSnippets[language];
-        contentDiv.innerHTML = `<h2>${capitalizeFirstLetter(getLanguageName(language))}</h2><pre><code class="language-${language}"></code></pre>`;
+        const languageName = capitalizeFirstLetter(getLanguageName(language));
+        const iconClass = languageIcons[language] || '';
+
+        // 언어 이름과 아이콘을 포함한 HTML 생성
+        const headerHTML = iconClass 
+          ? `<i class="${iconClass} language-logo"></i><span>${languageName}</span>`
+          : `<span>${languageName}</span>`;
+
+        contentDiv.innerHTML = `<h2>${headerHTML}</h2><pre><code class="language-${language}">${code}</code></pre>`;
         const codeElement = contentDiv.querySelector('code');
-        codeElement.textContent = code; // 안전하게 코드 삽입
         hljs.highlightElement(codeElement); // Highlight.js를 사용하여 하이라이팅 적용
       }
 
@@ -395,7 +489,8 @@ int main() {
           "cpp": "C++",
           "fsharp": "F#",
           "sql": "SQL",
-          "php": "PHP"
+          "php": "PHP",
+          "basic": "Basic"
         };
         return languageNames[lang] || lang;
       }
